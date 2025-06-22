@@ -13,9 +13,24 @@ function Footer() {
 
                         <div className="p-5 w-[60%] ">
                             <div className="text-xs uppercase text-white font-medium">Contact us</div>
-                            <a className="my-3 block" href="/#">Software technology park, Agrabad, Chattogram <span className="text-teal-600 text-xs p-1"></span></a>
-                            <a className="my-3 block" href="mailto:chowdhury.bfb@gmail.com">chowdhury.bfb@gmail.com <span className="text-teal-600 text-xs p-1"></span></a>
-                            <a className="my-3 block" href="tel:01558919983">+8801558919983<span className="text-teal-600 text-xs p-1"></span></a>
+                            <div className="my-3 block">
+                                <span className="font-semibold">Dhaka Office Address:</span><br />
+                                Lake pearl, House:09, Road:19, Sector:12, Uttara Model Town, Dhaka
+                            </div>
+                            <div className="my-3 block">
+                                <span className="font-semibold">Chattogram Office Address:</span><br />
+                                Biponi Bitan, Block-B, 7th Floor, Kotowali, Chattogram.
+                            </div>
+                            <div className="my-3 block">
+                                <span className="font-semibold">Email:</span>
+                                <a href="mailto:info@bfb.org.bd" className="ml-1 underline">info@bfb.org.bd</a> |
+                                <a href="mailto:official@bfb.org.bd" className="ml-1 underline">official@bfb.org.bd</a>
+                            </div>
+                            <div className="my-3 block">
+                                <span className="font-semibold">Phone:</span>
+                                <a href="tel:+8801316522094" className="ml-1 underline">+8801316 522094</a>,
+                                <a href="tel:+8801558919983" className="ml-1 underline">+8801558919983</a>
+                            </div>
                         </div>
                     </div>
                 </div>
