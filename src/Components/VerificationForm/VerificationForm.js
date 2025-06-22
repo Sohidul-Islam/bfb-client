@@ -10,6 +10,7 @@ const VerificationForm = () => {
   const [isValid, setValid] = useState(false);
   const [open, setOpen] = useState(false);
   const [message, setMessage] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
 
   const getId = useRef("");
   const VerificationData = [
@@ -53,6 +54,7 @@ const VerificationForm = () => {
   const verifiedHandler = (e) => {
     e.preventDefault();
     if (isValid) {
+      setIsLoading(true);
       getCertificate(getId.current.value).then((data) => {
         if (data != null) {
           setVerifiedData(data);
@@ -61,6 +63,9 @@ const VerificationForm = () => {
           setVerifiedData([]);
           setIsOpen(true);
         }
+        setIsLoading(false);
+      }).catch(() => {
+        setIsLoading(false);
       });
     }
   };
@@ -97,17 +102,20 @@ const VerificationForm = () => {
             </div>
             <br></br>
             <button
-              className="hover:text-[#334154] hover:border hover:border-[#334154]  hover:bg-white border-spacing-1 duration-500 shadow-md bg-[#334154] px-4 py-2 focus: text-white rounded-md my-2"
+              className="hover:text-[#334154] disabled:opacity-50 hover:border hover:border-[#334154]  hover:bg-white border-spacing-1 duration-500 shadow-md bg-[#334154] px-4 py-2 focus: text-white rounded-md my-2"
               type={"submit"}
+              disabled={isLoading}
             >
-              Verify{" "}
+              {!isLoading ? "Verify" : "Verifing..."}
             </button>
           </form>
         </div>
         {isValid && (
           <div className="w-full md:w-[800px] relative overflow-x-auto sm:rounded-lg">
             {isOpen && (
-              <VerifiedCard data={verifiedData} inputId={getId.current.value} />
+              <VerifiedCard data={verifiedData}
+                isLoading={isLoading}
+                inputId={getId.current.value} />
             )}
           </div>
         )}

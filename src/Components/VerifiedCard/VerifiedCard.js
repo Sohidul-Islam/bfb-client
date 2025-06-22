@@ -3,17 +3,11 @@ import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import PreLoader from "../PreLoader/PreLoader";
 import CloseIcon from "@mui/icons-material/Close";
-const VerifiedCard = ({ data, inputId }) => {
-  const [isOpen, setIsOpen] = useState(false);
+const VerifiedCard = ({ data, inputId, isLoading }) => {
+
   const [open, setOpen] = useState(false);
 
-  useEffect(() => {
-    setIsOpen(true);
-    setTimeout(() => {
-      setIsOpen(false);
-      setOpen(true);
-    }, 2000);
-  }, [data]);
+
 
   const VerificationData = [
     {
@@ -75,15 +69,14 @@ const VerifiedCard = ({ data, inputId }) => {
         id=""
         className="w-full shadow-md shadow-inner flex flex-col justify-center p-4"
       >
-        {isOpen ? (
+        {isLoading ? (
           <PreLoader size={100} />
         ) : (
           <div>
             <Collapse in={open}>
               <Alert
-                severity={`${
-                  Object.keys(data).length > 0 ? "success" : "error"
-                }`}
+                severity={`${Object.keys(data).length > 0 ? "success" : "error"
+                  }`}
                 action={
                   <IconButton
                     aria-label="close"
